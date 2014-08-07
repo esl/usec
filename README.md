@@ -22,14 +22,14 @@ API
 ---
 
 ```erlang
-usec:from_msec/1	% Convert milliseconds() to microseconds().
-usec:to_msec/1		% Convert microseconds() to milliseconds().
+usec:from_msec/1  % Convert milliseconds() to microseconds().
+usec:to_msec/1    % Convert microseconds() to milliseconds().
 
-usec:from_now/1	        % Convert now_timestamp() to microseconds().
-usec:to_now/1	        % Convert microseconds() to now_timestamp().
+usec:from_now/1   % Convert now_timestamp() to microseconds().
+usec:to_now/1     % Convert microseconds() to now_timestamp().
 
-usec:from_sec/1		% Convert seconds() to microseconds().
-usec:to_sec/1		% Convert microseconds() to seconds().
+usec:from_sec/1   % Convert seconds() to microseconds().
+usec:to_sec/1     % Convert microseconds() to seconds().
 ```
 
 Other Info
