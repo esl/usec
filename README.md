@@ -1,7 +1,8 @@
-usec
+usec [![Build Status](https://travis-ci.org/esl/usec.svg)](https://travis-ci.org/esl/usec)
 ====
 
-Converts anything\* to microseconds and back.
+Converts anything\* to microseconds and back. 
+
 
 Tired of implementing the same timestamp conversion functions in different
 projects under different names? I was, hence this tiny library.
@@ -46,3 +47,4 @@ This project uses [rebar][1] and the awesome [universal erlang makefile][2] by e
 ------------------
 [1]: https://github.com/rebar/rebar
 [2]: http://blog.erlware.org/2013/06/04/universal-makefile-for-erlang-projects-that-use-rebar/
+
