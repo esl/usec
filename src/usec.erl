@@ -13,6 +13,12 @@
 -type microseconds()  :: non_neg_integer().
 -type now_timestamp() :: {megaseconds(), seconds(), microseconds()}.
 
+-export_type([megaseconds/0,
+              seconds/0,
+              milliseconds/0,
+              microseconds/0,
+              now_timestamp/0]).
+
 %% @doc Convert {@type now_timestamp()} to {@type microseconds()}.
 -spec from_now(now_timestamp()) -> microseconds().
 from_now({MegaSecs,Secs,Usecs}) ->
