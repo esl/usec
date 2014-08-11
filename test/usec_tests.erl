@@ -1,5 +1,5 @@
 -module(usec_tests).
--include_lib("eunit/include/eunit.hrl").
+-include_lib("proper_eunit/include/pt_proper_eunit.hrl").
 
 from_sec0_test() ->
     ?assertEqual(0, usec:from_sec(0)).
@@ -50,3 +50,12 @@ to_msec_truncation0_test() ->
 to_msec_truncation1_test() ->
     ?assertEqual(1, usec:to_msec(1999)).
 
+
+%% Is one of these redundant?
+prop_no_loss_to_from_now() ->
+    ?FORALL(T, non_neg_integer(),
+            T =:= usec:from_now(usec:to_now(T))).
+
+prop_no_loss_from_to_now() ->
+    ?FORALL(ET, {non_neg_integer(), non_neg_integer(), non_neg_integer()},
+            ET =:= usec:to_now(usec:from_now(ET))).
