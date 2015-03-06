@@ -36,8 +36,8 @@ ifeq ($(REBAR),)
 $(error "Rebar not available on this system")
 endif
 
-.PHONY: all compile doc clean test dialyzer typer shell distclean pdf \
-  update-deps clean-common-test-data rebuild
+.PHONY: all compile compile-for-test doc clean test test-deps dialyzer typer \
+	shell distclean pdf update-deps clean-common-test-data rebuild
 
 sure: compile dialyzer test
 all: deps compile dialyzer test
@@ -60,11 +60,17 @@ compile:
 doc:
 	$(REBAR) skip_deps=true doc
 
-eunit: compile clean-common-test-data
-	@if [ $$SUITE ]; then $(REBAR) skip_deps=true eunit suite=$$SUITE; \
-                         else $(REBAR) skip_deps=true eunit; fi
+eunit: clean-common-test-data
+	@if [ $$SUITE ]; then $(REBAR) -C rebar.test.config skip_deps=true eunit suite=$$SUITE; \
+                         else $(REBAR) -C rebar.test.config skip_deps=true eunit; fi
 
-test: compile eunit
+test-deps:
+	$(REBAR) -C rebar.test.config get-deps
+
+compile-for-test: test-deps
+	$(REBAR) -C rebar.test.config compile
+
+test: compile-for-test eunit
 
 $(DEPS_PLT):
 	@echo Building local plt at $(DEPS_PLT)
